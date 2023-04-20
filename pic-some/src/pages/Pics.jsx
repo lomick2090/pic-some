@@ -3,7 +3,6 @@ import Image from '../components/Image'
 import getClass from '../utils/getClass'
 
 export default function Pics() {
-    let photoElements
     return(
         <main className={'photos'}>
             <ContextConsumer>
@@ -26,7 +25,6 @@ export default function Pics() {
                     }))
                 }}
             </ContextConsumer>
-
         </main>
     )
 }

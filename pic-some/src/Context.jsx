@@ -8,8 +8,6 @@ function ContextProvider(props) {
     const [photos, setPhotos] = useState([])
     const [cartItems, setCartItems] = useState([])
 
-    console.log(cartItems)
-
     function addItemToCart(item) {
         setCartItems(prevCart =>  [...prevCart, item ])
     }
