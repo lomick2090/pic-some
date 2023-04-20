@@ -1,13 +1,19 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Main from './pages/Main'
+import Home from './pages/Home'
+import Pics from './pages/Pics'
+import CheckOut from './pages/CheckOut'
 
 
 export default function App() {
     return (
         <div>
             <Routes>
-                <Route path='/'>
-                    <Route index />
+                <Route path='/' element={<Main />}>
+                    <Route index element={<Home />} />
+                    <Route path='pics' element={<Pics />} />
+                    <Route path='check-out' element={<CheckOut />} />
 
 
 
