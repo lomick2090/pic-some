@@ -7,6 +7,7 @@ const ContextConsumer = Context.Consumer
 function ContextProvider(props) {
     const [photos, setPhotos] = useState([])
     const [cartItems, setCartItems] = useState([])
+    const [isOrdering, setIsOrdering] = useState(false)
 
     function addItemToCart(item) {
         setCartItems(prevCart =>  [...prevCart, item ])
@@ -36,6 +37,14 @@ function ContextProvider(props) {
         })
     }
 
+    function handleOrder() {
+        setIsOrdering(true);
+        setTimeout(() => {
+            setCartItems([]);
+            setIsOrdering(false);
+        }, 3000)
+    }
+
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json')
             .then(res => res.json())
@@ -43,7 +52,7 @@ function ContextProvider(props) {
     }, [])
 
     return (
-        <Context.Provider value={{ photos, toggleFavorite, cartItems, addItemToCart, removeFromCart }}>
+        <Context.Provider value={{ photos, toggleFavorite, cartItems, addItemToCart, removeFromCart, handleOrder, isOrdering}}>
             {props.children}
         </Context.Provider>
     )

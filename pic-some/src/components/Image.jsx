@@ -1,23 +1,26 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import useHover from '../hooks/useHover'
+
 
 function Image({className, url, toggleFavorite, id, fav, addItemToCart, removeFromCart, cartItems, photo}) {
-    const [isHovered, setIsHovered] = React.useState(false);
+    //const [isHovered, setIsHovered] = React.useState(false);
+    const [isHovered, ref] = useHover();
     
     const isInCart = cartItems.find(item => (item.id == id) ? true : false)
 
-    function handleHover() {
-        setIsHovered(prevHover => {
-            return !prevHover
-        })
-    }
+   // function handleHover() {
+   //     setIsHovered(prevHover => {
+   //         return !prevHover
+   //     })
+   // }
 
 
     return (
         <div 
             className={`${className} image-container`}
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHover}
+            ref={ref}
+            
         >
             {(isHovered || fav) 
                 && 
